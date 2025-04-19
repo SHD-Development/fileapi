@@ -62,6 +62,7 @@ app.post("/api/file", authenticateBearer, upload.single("file"), (req, res) => {
   res.json({
     id: fileId,
     filename: req.file.filename,
+    url: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
     originalName: req.file.originalname,
     size: req.file.size,
   });
