@@ -4,11 +4,15 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const API_KEY = process.env.API_KEY;
 const uploadDir = path.join(__dirname, "uploads");
+
+app.use(cors());
+
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
